@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Client", "FitnessTracker\FitnessTracker.Client.csproj", "{69A0BEBA-B8A7-4186-BE9E-7BFEFF684627}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Common", "FitnessTracker.Common\FitnessTracker.Common.csproj", "{88DF6700-EE4D-476A-96BB-3CF682720A35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Identity", "FitnessTracker.Identity\FitnessTracker.Identity.csproj", "{FADB9502-0DF0-4EC8-B9EB-CF931D52D27C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Recipes", "FitnessTracker.Recipes\FitnessTracker.Recipes.csproj", "{FAF5EE52-62F5-4202-9287-9EFED5BA0E12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Notifications", "FitnessTracker.Notifications\FitnessTracker.Notifications.csproj", "{9374FB26-2DA3-442D-9BE4-24B56725CD47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Workouts", "FitnessTracker.Workouts\FitnessTracker.Workouts.csproj", "{7049D6BB-10DC-4D9D-9661-18392531EA34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69A0BEBA-B8A7-4186-BE9E-7BFEFF684627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A0BEBA-B8A7-4186-BE9E-7BFEFF684627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A0BEBA-B8A7-4186-BE9E-7BFEFF684627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A0BEBA-B8A7-4186-BE9E-7BFEFF684627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DF6700-EE4D-476A-96BB-3CF682720A35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DF6700-EE4D-476A-96BB-3CF682720A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DF6700-EE4D-476A-96BB-3CF682720A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DF6700-EE4D-476A-96BB-3CF682720A35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FADB9502-0DF0-4EC8-B9EB-CF931D52D27C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADB9502-0DF0-4EC8-B9EB-CF931D52D27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADB9502-0DF0-4EC8-B9EB-CF931D52D27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADB9502-0DF0-4EC8-B9EB-CF931D52D27C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF5EE52-62F5-4202-9287-9EFED5BA0E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF5EE52-62F5-4202-9287-9EFED5BA0E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF5EE52-62F5-4202-9287-9EFED5BA0E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF5EE52-62F5-4202-9287-9EFED5BA0E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9374FB26-2DA3-442D-9BE4-24B56725CD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9374FB26-2DA3-442D-9BE4-24B56725CD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9374FB26-2DA3-442D-9BE4-24B56725CD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9374FB26-2DA3-442D-9BE4-24B56725CD47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E49619DC-0FD6-4D80-BCC6-83C4E0DF60C2}
+	EndGlobalSection
+EndGlobal
