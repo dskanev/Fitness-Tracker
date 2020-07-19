@@ -5,6 +5,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using AutoMapper;
+    using GreenPipes;
     using MassTransit;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.EntityFrameworkCore;
@@ -120,6 +121,8 @@
 
                         consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
                         {
+                            endpoint.PrefetchCount = 6;
+                            endpoint.UseMessageRetry(x => x.Interval(5, 100));
                             endpoint.ConfigureConsumer(bus, consumer);
                         }));
                     }));
