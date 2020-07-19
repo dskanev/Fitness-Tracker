@@ -30,7 +30,6 @@ namespace FitnessTracker.Workouts
                 .AddWebService<WorkoutsDbContext>(this.Configuration)
                 .AddTransient<IDataSeeder, WorkoutsDataSeeder>()
                 .AddTransient<IExerciseService, ExerciseService>()
-                .AddTransient<IWorkoutService, WorkoutService>()
                 .AddMessaging();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

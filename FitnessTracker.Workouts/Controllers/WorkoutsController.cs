@@ -20,18 +20,15 @@ namespace FitnessTracker.Workouts.Controllers
         private readonly ICurrentUserService currentUser;
         private readonly IBus publisher;
         private readonly IExerciseService exerciseService;
-        private readonly IWorkoutService workoutService;
 
         public WorkoutsController(
             ICurrentUserService currentUser,
             IBus publisher,
-            IExerciseService exerciseService,
-            IWorkoutService workoutService)
+            IExerciseService exerciseService)
         {
             this.currentUser = currentUser;
             this.publisher = publisher;
             this.exerciseService = exerciseService;
-            this.workoutService = workoutService;
         }
 
         [HttpGet]
