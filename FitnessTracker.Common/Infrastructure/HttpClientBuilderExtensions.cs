@@ -1,9 +1,11 @@
 ﻿namespace FitnessTracker.Infrastructure
 {
     using System;
+    using System.Net;
     using System.Net.Http.Headers;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.DependencyInjection;
+    using Polly;
     using Services.Identity;
 
     using static InfrastructureConstants;
@@ -34,6 +36,12 @@
 
                     var authorizationHeader = new AuthenticationHeaderValue(AuthorizationHeaderValuePrefix, currentToken);
                     client.DefaultRequestHeaders.Authorization = authorizationHeader;
-                });
+                })
+                .AddTransientHttpErrorPolicy(policy => policy
+                    .OrResult(result => result.StatusCode == HttpStatusCode.NotFound)
+                    .WaitAndRetryAsync(6, retry =>
+                        TimeSpan.FromSeconds(Math.Pow(2, retry))))
+                .AddTransientHttpErrorPolicy(policy => policy
+                    .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
     }
 }
