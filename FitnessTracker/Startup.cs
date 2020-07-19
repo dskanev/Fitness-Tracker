@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FitnessTracker.Client.Infrastructure;
 using FitnessTracker.Client.Services;
 using FitnessTracker.Client.Services.Identity;
+using FitnessTracker.Client.Services.Meals;
 using FitnessTracker.Client.Services.Recipes;
 using FitnessTracker.Client.Services.Workouts;
 using FitnessTracker.Infrastructure;
@@ -52,6 +53,10 @@ namespace FitnessTracker
             services
                 .AddRefitClient<IWorkoutsService>()
                 .WithConfiguration(serviceEndpoints.Workouts);
+
+            services
+                .AddRefitClient<IMealsService>()
+                .WithConfiguration(serviceEndpoints.Meals);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

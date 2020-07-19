@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Recipes", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Notifications", "FitnessTracker.Notifications\FitnessTracker.Notifications.csproj", "{9374FB26-2DA3-442D-9BE4-24B56725CD47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Workouts", "FitnessTracker.Workouts\FitnessTracker.Workouts.csproj", "{7049D6BB-10DC-4D9D-9661-18392531EA34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Workouts", "FitnessTracker.Workouts\FitnessTracker.Workouts.csproj", "{7049D6BB-10DC-4D9D-9661-18392531EA34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Meals", "FitnessTracker.Meals\FitnessTracker.Meals.csproj", "{F4CCFE89-E094-4A9A-9FA4-8E5FD0290A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7049D6BB-10DC-4D9D-9661-18392531EA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4CCFE89-E094-4A9A-9FA4-8E5FD0290A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4CCFE89-E094-4A9A-9FA4-8E5FD0290A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4CCFE89-E094-4A9A-9FA4-8E5FD0290A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4CCFE89-E094-4A9A-9FA4-8E5FD0290A2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

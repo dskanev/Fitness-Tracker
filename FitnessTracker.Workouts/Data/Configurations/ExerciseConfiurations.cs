@@ -26,7 +26,7 @@ namespace FitnessTracker.Workouts.Data.Configurations
                 .HasMaxLength(100);
 
             builder
-                .HasOne(c => c.Category)
+                .HasOne(c => c.ExerciseCategory)
                 .WithMany(c => c.Exercises)
                 .HasForeignKey(c => c.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);

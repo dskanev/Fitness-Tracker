@@ -15,6 +15,10 @@ using FitnessTracker.Client.ViewModels;
 using FitnessTracker.Client.ViewModels.Identity;
 using FitnessTracker.Client.ViewModels.Homepage;
 using FitnessTracker.Client.ViewModels.Recipes;
+using FitnessTracker.Client.Services.Workouts;
+using FitnessTracker.Services.Identity;
+using Microsoft.AspNetCore.Authorization;
+using FitnessTracker.Client.Services.Meals;
 
 namespace FitnessTracker.Controllers
 {
@@ -23,23 +27,46 @@ namespace FitnessTracker.Controllers
         private readonly IIdentityService identityService;
         private readonly IRecipesService recipesService;
         private readonly IMapper mapper;
+        private readonly IWorkoutsService workoutsService;
+        private readonly ICurrentUserService currentUser;
+        private readonly IMealsService mealsService;
 
         public HomeController(
             IIdentityService identityService,
             IRecipesService recipesService,
-            IMapper mapper)
+            IWorkoutsService workoutsService,
+            ICurrentUserService currentUser,
+            IMapper mapper,
+            IMealsService mealsService)
         {
             this.identityService = identityService;
             this.recipesService = recipesService;
+            this.workoutsService = workoutsService;
+            this.currentUser = currentUser;
             this.mapper = mapper;
+            this.mealsService = mealsService;
         }
         public async Task<IActionResult> Index()
         {
+            if (currentUser.UserId != null)
+            {
+                return RedirectToAction(nameof(HomeController.Homepage), "Home");
+            }
+
+            return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Homepage()
+        {
+            var userId = currentUser.UserId;
             var model = new HomepageViewModel
             {
-                Recipes = await this.recipesService.All()
-            };   
-            
+                Recipes = await this.recipesService.All(),
+                Exercises = await this.workoutsService.GetExercisesByUser(userId),
+                Meals = await this.mealsService.GetMealsByUser(userId)
+            };
+
             return View(model);
         }
 

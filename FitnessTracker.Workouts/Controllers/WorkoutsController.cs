@@ -6,8 +6,10 @@ using FitnessTracker.Common.Controllers;
 using FitnessTracker.Services;
 using FitnessTracker.Services.Identity;
 using FitnessTracker.Workouts.Data.Models;
+using FitnessTracker.Workouts.Models;
 using FitnessTracker.Workouts.Services;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,7 +36,8 @@ namespace FitnessTracker.Workouts.Controllers
 
         [HttpGet]
         [Route(Id)]
-        public async Task<IEnumerable<Exercise>> GetExercisesByUser(string id)
+        [Authorize]
+        public async Task<IEnumerable<ExerciseOutputModel>> GetExercisesByUser(string id)
         {
             var result = await this.exerciseService.GetExercisesForUser(id);
             return result;

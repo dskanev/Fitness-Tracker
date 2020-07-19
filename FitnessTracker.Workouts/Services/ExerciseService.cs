@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FitnessTracker.Services;
 using FitnessTracker.Workouts.Data.Models;
+using FitnessTracker.Workouts.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,10 @@ namespace FitnessTracker.Workouts.Services
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
-        public async Task<IEnumerable<Exercise>> GetExercisesForUser(string userId)
+        public async Task<IEnumerable<ExerciseOutputModel>> GetExercisesForUser(string userId)
         {
-            var result = await this.All()
+            var result = await this.mapper
+                .ProjectTo<ExerciseOutputModel>(this.All())
                 .Where(x => x.UserId == userId)
                 .ToListAsync();
 

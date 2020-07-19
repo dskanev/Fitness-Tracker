@@ -1,0 +1,28 @@
+﻿@model FitnessTracker.Client.ViewModels.Tracking.TrackingFormModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4">
+        <form asp-controller="Tracking" asp-action="TrackMeal" method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Enter name">
+                <label asp-for="Category"></label>
+                <input asp-for="Category" type="text" class="form-control" id="name" placeholder="Enter Category">
+                <label asp-for="Protein"></label>
+                <input asp-for="Protein" type="text" class="form-control" id="name" placeholder="Enter Protein">
+                <label asp-for="Fat"></label>
+                <input asp-for="Fat" type="text" class="form-control" id="name" placeholder="Enter Fat">
+                <label asp-for="Carbs"></label>
+                <input asp-for="Carbs" type="text" class="form-control" id="name" placeholder="Enter Carbs">
+                <label asp-for="Calories"></label>
+                <input asp-for="Calories" type="text" class="form-control" id="name" placeholder="Enter Calories">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

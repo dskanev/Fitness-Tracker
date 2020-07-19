@@ -10,6 +10,7 @@ namespace FitnessTracker.Client.Services
         public string Identity { get; private set; }
         public string Recipes { get; private set; }
         public string Workouts { get; private set; }
+        public string Meals { get; private set; }
 
         public string this[string service]
             => this.GetType()

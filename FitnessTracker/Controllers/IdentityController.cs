@@ -44,7 +44,7 @@ namespace FitnessTracker.Client.Controllers
                             MaxAge = TimeSpan.FromDays(1)
                         });
                 },
-                success: RedirectToAction(nameof(HomeController.Index), "Home"),
+                success: RedirectToAction(nameof(HomeController.Homepage), "Home"),
                 failure: View("../Home/Index", model));
 
         [AuthorizeAdministrator]

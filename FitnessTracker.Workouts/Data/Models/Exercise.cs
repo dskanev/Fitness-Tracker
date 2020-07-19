@@ -14,7 +14,7 @@ namespace FitnessTracker.Workouts.Data.Models
         public int CaloriesPerRep { get; set; }
         public int CategoryId { get; set; }
         public int WorkoutId { get; set; }
-        public ExerciseCategory Category { get; set; }
+        public ExerciseCategory ExerciseCategory { get; set; }
         public Workout Workout { get; set; }
         public string UserId { get; set; }
     }

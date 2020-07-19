@@ -1,4 +1,6 @@
-﻿using FitnessTracker.Client.ViewModels.Recipes;
+﻿using FitnessTracker.Client.ViewModels.Meals;
+using FitnessTracker.Client.ViewModels.Recipes;
+using FitnessTracker.Client.ViewModels.Workouts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,14 +11,8 @@ namespace FitnessTracker.Client.ViewModels.Homepage
 {
     public class HomepageViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email Address")]
-        public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-        public string Token { get; set; }
         public IEnumerable<RecipeDetailsOutputModel> Recipes { get; set; }
+        public IEnumerable<ExerciseOutputModel> Exercises { get; set; }
+        public IEnumerable<MealOutputModel> Meals { get; set; }
     }
 }

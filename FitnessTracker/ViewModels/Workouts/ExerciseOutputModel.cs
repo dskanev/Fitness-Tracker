@@ -12,6 +12,6 @@ namespace FitnessTracker.Client.ViewModels.Workouts
         public int Sets { get; set; }
         public int Reps { get; set; }
         public int CaloriesPerRep { get; set; }
-        public string Category { get; set; }
+        public string ExerciseCategory { get; set; }
     }
 }
