@@ -19,6 +19,9 @@ using FitnessTracker.Client.Services.Workouts;
 using FitnessTracker.Services.Identity;
 using Microsoft.AspNetCore.Authorization;
 using FitnessTracker.Client.Services.Meals;
+using FitnessTracker.Common.Infrastructure;
+using FitnessTracker.Client.ViewModels.Workouts;
+using FitnessTracker.Client.ViewModels.Meals;
 
 namespace FitnessTracker.Controllers
 {
@@ -60,12 +63,25 @@ namespace FitnessTracker.Controllers
         public async Task<IActionResult> Homepage()
         {
             var userId = currentUser.UserId;
-            var model = new HomepageViewModel
+            var model = new HomepageViewModel {};
+
+            // if one microservice is down move on after the exception, ugly but no time for a cleaner solution
+
+            try
             {
-                Recipes = await this.recipesService.All(),
-                Exercises = await this.workoutsService.GetExercisesByUser(userId),
-                Meals = await this.mealsService.GetMealsByUser(userId)
-            };
+                model.Recipes = await this.recipesService.All();
+            }
+            catch { }
+            try
+            {
+                model.Exercises = await this.workoutsService.GetExercisesByUser(userId);
+            }
+            catch { }
+            try
+            {
+                model.Meals = await this.mealsService.GetMealsByUser(userId);
+            }
+            catch { }          
 
             return View(model);
         }

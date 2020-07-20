@@ -39,9 +39,9 @@
                 })
                 .AddTransientHttpErrorPolicy(policy => policy
                     .OrResult(result => result.StatusCode == HttpStatusCode.NotFound)
-                    .WaitAndRetryAsync(6, retry =>
+                    .WaitAndRetryAsync(3, retry =>
                         TimeSpan.FromSeconds(Math.Pow(2, retry))))
                 .AddTransientHttpErrorPolicy(policy => policy
-                    .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
+                    .CircuitBreakerAsync(3, TimeSpan.FromSeconds(8)));
     }
 }
