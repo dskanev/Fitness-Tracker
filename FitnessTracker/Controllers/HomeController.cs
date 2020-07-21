@@ -22,6 +22,7 @@ using FitnessTracker.Client.Services.Meals;
 using FitnessTracker.Common.Infrastructure;
 using FitnessTracker.Client.ViewModels.Workouts;
 using FitnessTracker.Client.ViewModels.Meals;
+using FitnessTracker.Client.Services.Calories;
 
 namespace FitnessTracker.Controllers
 {
@@ -33,6 +34,7 @@ namespace FitnessTracker.Controllers
         private readonly IWorkoutsService workoutsService;
         private readonly ICurrentUserService currentUser;
         private readonly IMealsService mealsService;
+        private readonly ICaloriesService caloriesService;
 
         public HomeController(
             IIdentityService identityService,
@@ -40,7 +42,8 @@ namespace FitnessTracker.Controllers
             IWorkoutsService workoutsService,
             ICurrentUserService currentUser,
             IMapper mapper,
-            IMealsService mealsService)
+            IMealsService mealsService,
+            ICaloriesService caloriesService)
         {
             this.identityService = identityService;
             this.recipesService = recipesService;
@@ -48,6 +51,7 @@ namespace FitnessTracker.Controllers
             this.currentUser = currentUser;
             this.mapper = mapper;
             this.mealsService = mealsService;
+            this.caloriesService = caloriesService;
         }
         public async Task<IActionResult> Index()
         {
@@ -81,7 +85,12 @@ namespace FitnessTracker.Controllers
             {
                 model.Meals = await this.mealsService.GetMealsByUser(userId);
             }
-            catch { }          
+            catch { }
+            try
+            {
+                model.NetCalories = await this.caloriesService.NetCaloriesForUser(userId);
+            }
+            catch { }
 
             return View(model);
         }

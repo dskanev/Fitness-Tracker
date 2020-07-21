@@ -14,5 +14,7 @@ namespace FitnessTracker.Client.ViewModels.Homepage
         public IEnumerable<RecipeDetailsOutputModel> Recipes { get; set; } = new List<RecipeDetailsOutputModel>();
         public IEnumerable<ExerciseOutputModel> Exercises { get; set; } = new List<ExerciseOutputModel>();
         public IEnumerable<MealOutputModel> Meals { get; set; } = new List<MealOutputModel>();
+
+        public long NetCalories { get; set; }
     }
 }

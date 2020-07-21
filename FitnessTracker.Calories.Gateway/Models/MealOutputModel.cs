@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FitnessTracker.Client.ViewModels.Meals
+namespace FitnessTracker.Calories.Gateway.Models
 {
     public class MealOutputModel
     {

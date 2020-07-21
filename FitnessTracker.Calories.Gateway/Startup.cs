@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using FitnessTracker.Client.Infrastructure;
+using FitnessTracker.Calories.Gateway.Services;
 using FitnessTracker.Client.Services;
-using FitnessTracker.Client.Services.Calories;
-using FitnessTracker.Client.Services.Identity;
-using FitnessTracker.Client.Services.Meals;
-using FitnessTracker.Client.Services.Recipes;
-using FitnessTracker.Client.Services.Workouts;
 using FitnessTracker.Infrastructure;
 using FitnessTracker.Services.Identity;
 using Microsoft.AspNetCore.Builder;
@@ -19,9 +14,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Refit;
 
-namespace FitnessTracker
+namespace FitnessTracker.Calories.Gateway
 {
     public class Startup
     {
@@ -39,53 +35,37 @@ namespace FitnessTracker
                 .AddAutoMapperProfile(Assembly.GetExecutingAssembly())
                 .AddTokenAuthentication(this.Configuration)
                 .AddScoped<ICurrentTokenService, CurrentTokenService>()
-                .AddTransient<JwtCookieAuthenticationMiddleware>()
-                .AddControllersWithViews(options => options
-                    .Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+                .AddTransient<JwtHeaderAuthenticationMiddleware>()
+                .AddControllers();
 
             services
-                .AddRefitClient<IIdentityService>()
-                .WithConfiguration(serviceEndpoints.Identity);
-
-            services
-                .AddRefitClient<IRecipesService>()
-                .WithConfiguration(serviceEndpoints.Recipes);
-
-            services
-                .AddRefitClient<IWorkoutsService>()
+                .AddRefitClient<IWorkoutService>()
                 .WithConfiguration(serviceEndpoints.Workouts);
 
             services
                 .AddRefitClient<IMealsService>()
                 .WithConfiguration(serviceEndpoints.Meals);
-
-            services
-                .AddRefitClient<ICaloriesService>()
-                .WithConfiguration(serviceEndpoints.CaloriesGateway);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app
-                    .UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app
-                    .UseExceptionHandler("/Home/Error")
-                    .UseHsts();
+                app.UseDeveloperExceptionPage();
             }
 
-            app
-                .UseHttpsRedirection()
-                .UseStaticFiles()
-                .UseRouting()
-                .UseJwtCookieAuthentication()
-                .UseAuthorization()
-                .UseEndpoints(endpoints => endpoints
-                    .MapDefaultControllerRoute());
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseJwtHeaderAuthentication();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
