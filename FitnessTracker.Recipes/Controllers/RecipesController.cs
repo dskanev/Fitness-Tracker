@@ -48,7 +48,8 @@ namespace FitnessTracker.Recipes.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<CreateRecipeOutputModel>> Create(RecipeInputModel input)
+        [Route(nameof(PostRecipe))]
+        public async Task<ActionResult> PostRecipe(RecipeInputModel input)
         {
             var user = this.currentUser.UserId;
 
@@ -74,12 +75,13 @@ namespace FitnessTracker.Recipes.Controllers
                 {
                     Salt = input.Salt,
                     Potassium = input.Potassium
-                }
+                },
+                Instructions = input.Instructions
             };
 
             await this.recipes.Save(recipe);
 
-            return new CreateRecipeOutputModel(recipe.Id);
+            return Result.Success;
         }
     }
 }

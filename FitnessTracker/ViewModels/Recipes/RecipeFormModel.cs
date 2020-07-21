@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FitnessTracker.Recipes.Models.Recipes
+namespace FitnessTracker.Client.ViewModels.Recipes
 {
-    public class RecipeInputModel
+    public class RecipeFormModel
     {
         public int Category { get; set; }
         public string Name { get; set; }

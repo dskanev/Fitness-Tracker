@@ -114,6 +114,20 @@ namespace FitnessTracker.Controllers
             return View(await this.recipesService.Details(id));
         }
 
+        public async Task<IActionResult> PostRecipe()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> PostRecipe(RecipeFormModel model)
+        {
+            var param = this.mapper.Map<RecipeInputModel>(model);
+            var result = await this.recipesService.PostRecipe(param);
+            return RedirectToAction("Index", "Home");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
             => View(new ErrorViewModel
