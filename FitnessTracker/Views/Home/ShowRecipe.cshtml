@@ -1,14 +1,16 @@
 ﻿@model FitnessTracker.Client.ViewModels.Recipes.RecipeDetailsOutputModel
 
-    <p>@Model.Id</p>
-    <p>@Model.Name</p>
-    <img url='@Model.ImageUrl' />
-    <p>@Model.Protein</p>
-    <p>@Model.Carbs</p>
-    <p>@Model.Fat</p>
-    <p>@Model.Price</p>
-    <p>@Model.PreparationTime</p>
-    <p>@Model.Category</p>
+    <h1>This is a recipe for @Model.Name</h1>
+    <h2>Category: @Model.Category</h2>
+    <img src='@Model.ImageUrl' />
+    <h3>Ingredients:</h3>
+    <p>Protein: @Model.Protein gr</p>
+    <p>Carbohydrates: @Model.Carbs gr</p>
+    <p>Fats: @Model.Fat gr</p>
+    <p>Cost to make: @Model.Price BGN</p>
+    <p>Time to make: @Model.PreparationTime</p>
+    
     <text>
+        <h3>Instructions:</h3>
         @Model.Instructions
     </text>
