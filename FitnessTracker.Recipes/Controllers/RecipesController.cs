@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FitnessTracker.Common.Controllers;
-using FitnessTracker.Common.Messages.Dealers;
+using FitnessTracker.Common.Messages;
 using FitnessTracker.Infrastructure;
 using FitnessTracker.Recipes.Data.Models;
 using FitnessTracker.Recipes.Models.Recipes;
@@ -78,14 +78,6 @@ namespace FitnessTracker.Recipes.Controllers
             };
 
             await this.recipes.Save(recipe);
-
-            await this.publisher.Publish(new RecipeCreatedMessage
-            {
-                RecipeId = recipe.Id,
-                Protein = recipe.Protein,
-                CategoryName = recipe.Category.Name,
-                Price = recipe.Price
-            });
 
             return new CreateRecipeOutputModel(recipe.Id);
         }
