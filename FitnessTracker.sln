@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Meals", "Fit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Calories.Gateway", "FitnessTracker.Calories.Gateway\FitnessTracker.Calories.Gateway.csproj", "{C8EAD666-5CB8-4211-9375-F04682BA9CC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.UserHistory", "FitnessTracker.UserHistory\FitnessTracker.UserHistory.csproj", "{9C4888D0-62EB-47DE-A457-F2A99D63A256}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{C8EAD666-5CB8-4211-9375-F04682BA9CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8EAD666-5CB8-4211-9375-F04682BA9CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8EAD666-5CB8-4211-9375-F04682BA9CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C4888D0-62EB-47DE-A457-F2A99D63A256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4888D0-62EB-47DE-A457-F2A99D63A256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C4888D0-62EB-47DE-A457-F2A99D63A256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C4888D0-62EB-47DE-A457-F2A99D63A256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
