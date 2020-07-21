@@ -16,5 +16,6 @@ namespace FitnessTracker.Client.ViewModels.Homepage
         public IEnumerable<MealOutputModel> Meals { get; set; } = new List<MealOutputModel>();
 
         public long NetCalories { get; set; }
+        public int MealsTracked { get; set; }
     }
 }

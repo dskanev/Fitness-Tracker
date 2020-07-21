@@ -1,10 +1,10 @@
-﻿using FitnessTracker.Meals.Messages;
-using FitnessTracker.UserHistory.Services;
+﻿using FitnessTracker.UserHistory.Services;
 using MassTransit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FitnessTracker.Common.Messages;
 
 namespace FitnessTracker.UserHistory.Messages
 {
@@ -16,6 +16,6 @@ namespace FitnessTracker.UserHistory.Messages
             => this.userHistoryService = userHistoryService;
 
         public async Task Consume(ConsumeContext<MealTrackedMessage> context)
-            => await this.userHistoryService.TrackMeal();
+            => await this.userHistoryService.TrackMeal(context.Message.UserId);
     }
 }

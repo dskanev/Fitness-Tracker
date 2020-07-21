@@ -12,13 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\FitnessTracker.Meals\FitnessTracker.Meals.csproj" />
+    <ProjectReference Include="..\FitnessTracker.Common\FitnessTracker.Common.csproj" />
   </ItemGroup>
 
 
