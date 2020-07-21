@@ -22,11 +22,28 @@ namespace FitnessTracker.UserHistory.Services
         this.mapper = mapper;
     }
         public async Task<int> MealsTracked(string userId)
-                => this.All().Where(x => x.UserId == userId).Count();
+        {
+            var results = this.All()
+                .Where(x => x.UserId == userId)
+                .Select(x => x.TrackedMeals)
+                .FirstOrDefault();
+
+            return results;
+        }
 
         public async Task TrackMeal(string userId)
         {
             var userHistory = await this.All().Where(x => x.UserId == userId).SingleOrDefaultAsync();
+
+            if(userHistory == null)
+            {
+                userHistory = new Data.Models.UserHistory()
+                {
+                    UserId = userId,
+                    TrackedMeals = 0
+                };
+                await this.Save(userHistory);
+            }
 
             userHistory.TrackedMeals++;
 

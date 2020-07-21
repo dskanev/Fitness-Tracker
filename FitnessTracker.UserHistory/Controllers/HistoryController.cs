@@ -1,4 +1,5 @@
 ﻿using FitnessTracker.Common.Controllers;
+using FitnessTracker.Services;
 using FitnessTracker.UserHistory.Models;
 using FitnessTracker.UserHistory.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,10 @@ namespace FitnessTracker.UserHistory.Controllers
 
         [HttpGet]
         [Route(Id)]
-        public async Task<int> MealsTracked(string userId)
-            => await this.userHistoryService.MealsTracked(userId);
+        public async Task<int> MealsTracked(string id)
+        {
+            var result = await this.userHistoryService.MealsTracked(id);
+            return result;
+        } 
     }
 }
