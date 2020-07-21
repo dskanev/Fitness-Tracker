@@ -13,5 +13,6 @@ namespace FitnessTracker.Client.ViewModels.Tracking
         public int Carbs { get; set; }
         public int Fat { get; set; }
         public int Calories { get; set; }
+
     }
 }

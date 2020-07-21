@@ -1,4 +1,5 @@
 ﻿using FitnessTracker.Client.ViewModels.Meals;
+using FitnessTracker.Client.ViewModels.Workouts;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using System;

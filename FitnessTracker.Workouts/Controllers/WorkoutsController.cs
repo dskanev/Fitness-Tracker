@@ -39,5 +39,15 @@ namespace FitnessTracker.Workouts.Controllers
             var result = await this.exerciseService.GetExercisesForUser(id);
             return result;
         }
+
+        [HttpPost]
+        [Route(nameof(TrackWorkout))]
+        [Authorize]
+        public async Task<ActionResult> TrackWorkout(ExerciseInputModel input)
+        {
+            var result = await this.exerciseService.TrackWorkout(this.currentUser.UserId, input);
+            return result;
+        } 
+
     }
 }

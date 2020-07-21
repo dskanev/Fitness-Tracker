@@ -1,6 +1,7 @@
 ﻿using FitnessTracker.Services;
 using FitnessTracker.Workouts.Data.Models;
 using FitnessTracker.Workouts.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace FitnessTracker.Workouts.Services
         Task<bool> Delete(int id);
 
         Task<IEnumerable<ExerciseOutputModel>> GetExercisesForUser(string userId);
+
+        Task<ActionResult> TrackWorkout(string userId, ExerciseInputModel input);
     }
 }

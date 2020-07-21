@@ -9,6 +9,8 @@ namespace FitnessTracker.UserHistory.Services
     public interface IUserHistoryService
     {
         Task<int> MealsTracked(string userId);
+        Task<int> CaloriesBurned(string userId);
         Task TrackMeal(string userId);
+        Task TrackWorkout(string userId, int calories);
     }
 }

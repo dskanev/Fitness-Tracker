@@ -100,6 +100,11 @@ namespace FitnessTracker.Controllers
                 model.MealsTracked = await this.userHistory.MealsTracked(userId);
             }
             catch { }
+            try
+            {
+                model.TotalCaloriesBurned = await this.userHistory.CaloriesBurned(userId);
+            }
+            catch { }
 
             return View(model);
         }

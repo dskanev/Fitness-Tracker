@@ -49,5 +49,34 @@ namespace FitnessTracker.UserHistory.Services
 
             await this.Data.SaveChangesAsync();
         }
+
+        public async Task TrackWorkout(string userId, int calories)
+        {
+            var userHistory = await this.All().Where(x => x.UserId == userId).SingleOrDefaultAsync();
+
+            if (userHistory == null)
+            {
+                userHistory = new Data.Models.UserHistory()
+                {
+                    UserId = userId,
+                    TotalCalories = 0
+                };
+                await this.Save(userHistory);
+            }
+
+            userHistory.TotalCalories = userHistory.TotalCalories + calories;
+
+            await this.Data.SaveChangesAsync();
+        }
+
+        public async Task<int> CaloriesBurned(string userId)
+        {
+            var results = this.All()
+                .Where(x => x.UserId == userId)
+                .Select(x => x.TotalCalories)
+                .FirstOrDefault();
+
+            return results;
+        }
     }
 }

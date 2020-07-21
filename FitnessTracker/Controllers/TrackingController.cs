@@ -6,6 +6,7 @@ using FitnessTracker.Client.Services.Recipes;
 using FitnessTracker.Client.Services.Workouts;
 using FitnessTracker.Client.ViewModels.Meals;
 using FitnessTracker.Client.ViewModels.Tracking;
+using FitnessTracker.Client.ViewModels.Workouts;
 using FitnessTracker.Controllers;
 using FitnessTracker.Services.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -43,6 +44,11 @@ namespace FitnessTracker.Client.Controllers
             return View();
         }
 
+        public async Task<IActionResult> TrackWorkout()
+        {
+            return View();
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> TrackMeal(TrackingFormModel model)
@@ -50,7 +56,16 @@ namespace FitnessTracker.Client.Controllers
             var param = this.mapper.Map<MealInputModel>(model);
             var result = await this.mealsService.TrackMeal(param);
             return RedirectToAction("Index", "Home");
-        } 
+        }
+        
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> TrackWorkout(TrackingWorkoutModel model)
+        {
+            var param = this.mapper.Map<WorkoutInputModel>(model);
+            var result = await this.workoutsService.TrackWorkout(param);
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

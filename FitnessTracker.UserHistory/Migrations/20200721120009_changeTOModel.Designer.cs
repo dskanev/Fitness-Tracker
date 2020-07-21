@@ -3,14 +3,16 @@ using FitnessTracker.UserHistory.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitnessTracker.UserHistory.Migrations
 {
     [DbContext(typeof(UserHistoryDbContext))]
-    partial class UserHistoryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200721120009_changeTOModel")]
+    partial class changeTOModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

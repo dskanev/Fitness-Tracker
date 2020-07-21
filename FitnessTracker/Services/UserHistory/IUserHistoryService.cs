@@ -10,5 +10,8 @@ namespace FitnessTracker.Client.Services.UserHistory
     {
         [Get("/History/{id}")]
         Task<int> MealsTracked(string id);
+
+        [Get("/History/CaloriesBurned/{id}")]
+        Task<int> CaloriesBurned(string id);
     }
 }

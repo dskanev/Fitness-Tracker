@@ -17,5 +17,6 @@ namespace FitnessTracker.Client.ViewModels.Homepage
 
         public long NetCalories { get; set; }
         public int MealsTracked { get; set; }
+        public int TotalCaloriesBurned { get; set; }
     }
 }

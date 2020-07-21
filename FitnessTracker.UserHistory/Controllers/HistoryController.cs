@@ -24,6 +24,14 @@ namespace FitnessTracker.UserHistory.Controllers
         {
             var result = await this.userHistoryService.MealsTracked(id);
             return result;
-        } 
+        }
+        
+        [HttpGet]
+        [Route("/History/CaloriesBurned/{id}")]
+        public async Task<int> CaloriesBurned(string id)
+        {
+            var result = await this.userHistoryService.CaloriesBurned(id);
+            return result;
+        }
     }
 }

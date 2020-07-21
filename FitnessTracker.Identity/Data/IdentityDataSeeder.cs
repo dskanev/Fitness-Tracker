@@ -42,9 +42,18 @@ namespace FitnessTracker.Identity.Data
                         SecurityStamp = "RandomSecurityStamp"
                     };
 
-                    await userManager.CreateAsync(adminUser, "adminpass12");
-
+                    await userManager.CreateAsync(adminUser, "adminpass12");                   
                     await userManager.AddToRoleAsync(adminUser, Constants.AdministratorRoleName);
+
+                    var normalUser = new User
+                    {
+                        UserName = "user@abv.bg",
+                        Email = "user@abv.bg",
+                        SecurityStamp = "RandomSecurityStamp"
+                    };
+
+                    await userManager.CreateAsync(normalUser, "Test1234!1");
+                    await userManager.AddToRoleAsync(normalUser, Constants.AdministratorRoleName);
                 })
                 .GetAwaiter()
                 .GetResult();

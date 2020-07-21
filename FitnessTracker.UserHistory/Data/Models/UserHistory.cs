@@ -12,5 +12,7 @@ namespace FitnessTracker.UserHistory.Data.Models
         public string UserId { get; set; }
 
         public int TrackedMeals { get; set; }
+
+        public int TotalCalories { get; set; }
     }
 }

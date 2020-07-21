@@ -28,7 +28,7 @@ namespace FitnessTracker.UserHistory
             => services
                 .AddWebService<UserHistoryDbContext>(this.Configuration)
                 .AddTransient<IUserHistoryService, UserHistoryService>()
-                .AddMessaging(typeof(MealTrackedConsumer));
+                .AddMessaging(typeof(MealTrackedConsumer), typeof(ExerciseTrackedConsumer));
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             => app
