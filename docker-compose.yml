@@ -1,0 +1,166 @@
+version: "3"
+
+services:
+    data:
+        container_name: sqlserver
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+            - "1433:1433"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=yourStrongPassword12!@
+        volumes:
+            - sqldata:/var/opt/mssql
+        networks:
+            - fitnesstracker-network           
+               
+    messages:
+        container_name: rabbitmq
+        image: rabbitmq:3-management
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        hostname: "rabbitmq"
+        environment:
+            - RABBITMQ_ERLANG_COOKIE=Rand0mR4bbitMqCo0k1e
+            - RABBITMQ_DEFAULT_USER=rabbitmq
+            -RABBITMQ_DEFAULT_PASS=rabbitmq
+        networks:
+            fitnesstracker-network
+               
+    identity:
+        container-name: identity
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.Identity/Dockerfile
+        ports:
+            - "7000:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FitnessTrackerIdentityDatabase;Trusted_Connection=True;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/identity/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+            
+    meals:
+        container-name: meals
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.Meals/Dockerfile
+        ports:
+            - "1234:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FitnessTrackerMealsDb;Trusted_Connection=True;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/meals/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+            
+    recipes:
+        container-name: recipes
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.Recipes/Dockerfile
+        ports:
+            - "5050:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FitnessTrackerRecipeDatabase;Trusted_Connection=True;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/recipes/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+            
+    userhistory:
+        container-name: userhistory
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.UserHistory/Dockerfile
+        ports:
+            - "2278:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FitnessTrackerUserHistoryDatabase;Trusted_Connection=True;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/userhistory/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+            
+    workouts:
+        container-name: workouts
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.Workouts/Dockerfile
+        ports:
+            - "5200:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ConnectionStrings__DefaultConnection=Server=Server=sqlserver;Database=FitnessTrackerWorkoutsDb;Trusted_Connection=True;MultipleActiveResultSets=true
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/workouts/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+            
+    caloriesgateway:
+        container-name: caloriesgateway
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.Calories.Gateway/Dockerfile
+        ports:
+            - "7777:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ServiceEndpoints__Workouts="https://workouts:5200"
+            -ServiceEndpoints__Meals="https//meals:1234"
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/caloriesgateway/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+            
+    client:
+        container-name: client
+        build:
+            context: ./
+            dockerfile: ./FitnessTracker.Identity/Dockerfile
+        ports:
+            - "5001:80"
+        env_file: FitnessTracker.Common/Common.env
+        environment:
+            -ServiceEndpoints__Identity="https://identity:7000"
+            -ServiceEndpoints__Recipes="https//recipes:5050"
+            -ServiceEndpoints__Workouts="https://workouts:5200"
+            -ServiceEndpoints__Meals="https//meals:1234"
+            -ServiceEndpoints__CaloriesGateway="https//caloriesgateway:7777"
+            -ServiceEndpoints__UserHistory="https//userhistory:2278"
+        restart: on-failure
+        volumes:
+            -   ./.aspnet/client/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+        networks:
+            fitnesstracker-network
+        depends-on:
+            data
+
+networks:
+    fitnesstracker-network:
+volumes:
+    sqldata:

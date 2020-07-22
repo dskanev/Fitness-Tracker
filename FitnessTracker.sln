@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Workouts", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Meals", "FitnessTracker.Meals\FitnessTracker.Meals.csproj", "{F4CCFE89-E094-4A9A-9FA4-8E5FD0290A2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Calories.Gateway", "FitnessTracker.Calories.Gateway\FitnessTracker.Calories.Gateway.csproj", "{C8EAD666-5CB8-4211-9375-F04682BA9CC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.Calories.Gateway", "FitnessTracker.Calories.Gateway\FitnessTracker.Calories.Gateway.csproj", "{C8EAD666-5CB8-4211-9375-F04682BA9CC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.UserHistory", "FitnessTracker.UserHistory\FitnessTracker.UserHistory.csproj", "{9C4888D0-62EB-47DE-A457-F2A99D63A256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessTracker.UserHistory", "FitnessTracker.UserHistory\FitnessTracker.UserHistory.csproj", "{9C4888D0-62EB-47DE-A457-F2A99D63A256}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
