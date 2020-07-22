@@ -18,8 +18,7 @@
                 app.UseDeveloperExceptionPage();
             }
 
-            app
-                .UseHttpsRedirection()
+            app                
                 .UseRouting()
                 .UseCors(options => options
                     .AllowAnyOrigin()
