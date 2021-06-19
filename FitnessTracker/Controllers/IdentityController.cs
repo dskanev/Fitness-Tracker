@@ -40,7 +40,7 @@ namespace FitnessTracker.Client.Controllers
                         new CookieOptions
                         {
                             HttpOnly = true,
-                            Secure = true,
+                            Secure = false,
                             MaxAge = TimeSpan.FromDays(1)
                         });
                 },
