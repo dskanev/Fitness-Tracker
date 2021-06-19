@@ -24,6 +24,7 @@ using FitnessTracker.Client.ViewModels.Workouts;
 using FitnessTracker.Client.ViewModels.Meals;
 using FitnessTracker.Client.Services.Calories;
 using FitnessTracker.Client.Services.UserHistory;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FitnessTracker.Controllers
 {
@@ -114,9 +115,23 @@ namespace FitnessTracker.Controllers
             return View(await this.recipesService.Details(id));
         }
 
-        public async Task<IActionResult> PostRecipe()
+        public IActionResult PostRecipe()
         {
-            return View();
+            var model = new RecipeFormModel
+            {
+                Categories = this.recipesService
+                .GetAllCategories()
+                .GetAwaiter()
+                .GetResult()
+                .Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
+                })
+                .ToList()
+            };
+
+            return View(model);
         }
 
         [HttpPost]

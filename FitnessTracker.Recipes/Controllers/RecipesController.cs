@@ -6,6 +6,7 @@ using FitnessTracker.Common.Controllers;
 using FitnessTracker.Common.Messages;
 using FitnessTracker.Infrastructure;
 using FitnessTracker.Recipes.Data.Models;
+using FitnessTracker.Recipes.Models.Categories;
 using FitnessTracker.Recipes.Models.Recipes;
 using FitnessTracker.Recipes.Services.Categories;
 using FitnessTracker.Recipes.Services.Recipes;
@@ -45,6 +46,11 @@ namespace FitnessTracker.Recipes.Controllers
         [HttpGet]
         public async Task<IEnumerable<RecipeOutputModel>> All()
             => await this.recipes.GetAll();
+
+        [HttpGet]
+        [Route(nameof(GetAllCategories))]
+        public async Task<IEnumerable<CategoryOutputModel>> GetAllCategories()
+            => await this.categories.GetAll();
 
         [HttpPost]
         [Authorize]

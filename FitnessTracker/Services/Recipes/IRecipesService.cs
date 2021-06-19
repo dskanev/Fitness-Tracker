@@ -19,5 +19,8 @@ namespace FitnessTracker.Client.Services.Recipes
 
         [Post("/Recipes/PostRecipe")]
         Task<ActionResult> PostRecipe([Body] RecipeInputModel input);
+
+        [Get("/Recipes/GetAllCategories")]
+        Task<IEnumerable<Category>> GetAllCategories();
     }
 }
