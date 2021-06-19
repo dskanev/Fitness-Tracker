@@ -39,12 +39,12 @@ namespace FitnessTracker.Client.Controllers
             this.mealsService = mealsService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        public async Task<IActionResult> TrackWorkout()
+        public IActionResult TrackWorkout()
         {
             return View();
         }

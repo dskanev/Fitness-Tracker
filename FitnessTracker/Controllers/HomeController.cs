@@ -58,7 +58,7 @@ namespace FitnessTracker.Controllers
             this.caloriesService = caloriesService;
             this.userHistory = userHistory;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (currentUser.UserId != null)
             {
