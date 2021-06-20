@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FitnessTracker.Common.Controllers;
+using FitnessTracker.Common.Infrastructure;
 using FitnessTracker.Common.Messages;
 using FitnessTracker.Infrastructure;
 using FitnessTracker.Recipes.Data.Models;
@@ -54,6 +55,7 @@ namespace FitnessTracker.Recipes.Controllers
 
         [HttpPost]
         [Authorize]
+        [UnauthorizedCustomActionFilter()]
         [Route(nameof(PostRecipe))]
         public async Task<ActionResult> PostRecipe(RecipeInputModel input)
         {
